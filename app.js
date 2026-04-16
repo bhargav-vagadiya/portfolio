@@ -167,9 +167,9 @@ sections.forEach(s => sectionObserver.observe(s));
 //   4. Go to Account → API Keys → copy the Public Key
 //   5. Replace the three placeholder strings below + in index.html
 
-const EMAILJS_SERVICE_ID = 'service_mh0i78h';   // e.g. 'service_abc123'
-const EMAILJS_TEMPLATE_ID = 'template_lhlalpg';  // e.g. 'template_xyz789'
-// Public Key is already set via emailjs.init() in index.html
+const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';   // injected by GitHub Actions
+const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';  // injected by GitHub Actions
+// Public Key is injected into index.html via GitHub Actions (YOUR_PUBLIC_KEY)
 
 function handleSubmit(e) {
   e.preventDefault();
