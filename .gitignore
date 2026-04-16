@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+
+# Local env files — NEVER commit real keys
+.env
+.env.local
+.env.*.local
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
