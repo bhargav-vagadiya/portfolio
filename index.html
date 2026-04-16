@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bhargav Vagadiya | Flutter Developer Portfolio</title>
+  <meta name="description"
+    content="Portfolio of Bhargav Vagadiya — Mobile Application Developer with 4 years of Flutter expertise in fintech, e-commerce, and social apps." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="text/javascript">
+    // TODO: Replace with your EmailJS Public Key
+    emailjs.init({ publicKey: 'YOUR_PUBLIC_KEY' });
+  </script>
+</head>
+
+<body>
+
+  <!-- ===== NAV ===== -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">BV<span class="dot">.</span></a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact" class="btn-nav">Contact</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-particles" id="particles"></div>
+    <div class="hero-content">
+      <div class="hero-badge animate-in" style="--delay:0.1s">
+        <span class="badge-dot"></span> Open to opportunities
+      </div>
+      <h1 class="hero-title animate-in" style="--delay:0.2s">
+        Hi, I'm <span class="gradient-text">Bhargav</span><br />
+        <span class="hero-sub">Flutter Developer</span>
+      </h1>
+      <p class="hero-desc animate-in" style="--delay:0.35s">
+        Mobile Application Developer with <strong>4 years</strong> of experience crafting
+        scalable, pixel-perfect apps across <em>fintech</em>, <em>e-commerce</em>,
+        and <em>social</em> domains.
+      </p>
+      <div class="hero-cta animate-in" style="--delay:0.5s">
+        <a href="#projects" class="btn-primary" id="view-projects-btn">View Projects</a>
+        <a href="#contact" class="btn-ghost">Get in Touch</a>
+      </div>
+      <div class="hero-stats animate-in" style="--delay:0.65s">
+        <div class="stat">
+          <span class="stat-num" data-target="4">0</span><span>+</span>
+          <p>Years Exp.</p>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" data-target="5">0</span><span>+</span>
+          <p>Apps Shipped</p>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" data-target="3">0</span><span></span>
+          <p>Companies</p>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual animate-in" style="--delay:0.3s">
+      <div class="phone-mockup">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="screen-code">
+            <div class="code-line"><span class="kw">class</span> <span class="cl">BhargavApp</span> <span
+                class="kw">extends</span> <span class="cl">StatelessWidget</span> {</div>
+            <div class="code-line">&nbsp;&nbsp;<span class="fn">@override</span></div>
+            <div class="code-line">&nbsp;&nbsp;<span class="cl">Widget</span> <span class="fn">build</span>(<span
+                class="cl">BuildContext</span> ctx) {</div>
+            <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span> <span
+                class="cl">MaterialApp</span>(</div>
+            <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;theme: <span class="fn">darkTheme</span>,</div>
+            <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;home: <span class="cl">Portfolio</span>(),</div>
+            <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;);</div>
+            <div class="code-line">&nbsp;&nbsp;}</div>
+            <div class="code-line">}</div>
+            <div class="code-cursor"></div>
+          </div>
+        </div>
+        <div class="phone-home-btn"></div>
+      </div>
+      <div class="floating-chip chip-1">
+        <img src="https://storage.googleapis.com/cms-storage-bucket/0dbfcc7a59cd1cf16282.png" alt="Flutter"
+          class="chip-icon" />
+        Flutter
+      </div>
+      <div class="floating-chip chip-2">🔥 Firebase</div>
+      <div class="floating-chip chip-3">📱 MVVM</div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">About Me</span>
+        <h2 class="section-title">Passionate About <span class="gradient-text">Mobile Experiences</span></h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            I'm a <strong>Mobile Application Developer</strong> with over 4 years of hands-on Flutter experience,
+            specialising in building high-performance, scalable apps that delight real users.
+          </p>
+          <p>
+            From architecting <em>fintech payment systems</em> to engineering <em>real-time social platforms</em>
+            and <em>environmental monitoring tools</em>, I bring a holistic approach — clean architecture,
+            solid state management, and a keen eye for UX.
+          </p>
+          <p>
+            Completed my <strong>MCA at Amity University</strong> in july 2025 while working full-time at
+            Elaunch Solutions, Surat, contributing to products that reach thousands of real users.
+          </p>
+          <div class="about-links">
+            <a href="mailto:bhargav.h.vagadiya@gmail.com" class="icon-link" id="email-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg>
+              bhargav.h.vagadiya@gmail.com
+            </a>
+            <a href="https://linkedin.com/in/bhargav-vagadiya" target="_blank" class="icon-link" id="linkedin-link">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                <rect x="2" y="9" width="4" height="12" />
+                <circle cx="4" cy="4" r="2" />
+              </svg>
+              linkedin.com/in/bhargav-vagadiya
+            </a>
+            <a href="tel:+917405225963" class="icon-link" id="phone-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.37 2 2 0 0 1 3.61 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+              +91 7405225963
+            </a>
+          </div>
+        </div>
+        <div class="about-card-wrap">
+          <div class="about-card">
+            <div class="about-card-icon">🏆</div>
+            <h3>Best Team Player</h3>
+            <p>Q3 2023 — Tagline Infotech LLP for outstanding collaboration and project delivery.</p>
+          </div>
+          <div class="about-card">
+            <div class="about-card-icon">🚀</div>
+            <h3>Play Store Shipped</h3>
+            <p>Multiple production apps live on Play Store & App Store serving real users globally.</p>
+          </div>
+          <div class="about-card">
+            <div class="about-card-icon">🎓</div>
+            <h3>Education</h3>
+            <p>Bachelor of Computer Applications — Veer Narmad South Gujarat University<br>
+              Master of Computer Applications — Amity University (Completed July 2025)
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EXPERIENCE ===== -->
+  <section id="experience" class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Career</span>
+        <h2 class="section-title">Professional <span class="gradient-text">Experience</span></h2>
+      </div>
+      <div class="timeline">
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="tl-header">
+              <div>
+                <h3 class="tl-role">Flutter Developer</h3>
+                <p class="tl-company">Elaunch Solutions, Surat</p>
+              </div>
+              <span class="tl-period">Sep 2024 – Present</span>
+            </div>
+            <ul class="tl-list">
+              <li>Developed and launched <strong>Leylix</strong> social media app with real-time messaging, media
+                sharing, and engagement tools.</li>
+              <li>Built <strong>OppiWallet</strong> fintech app with secure payment processing, wallet management, and
+                transaction tracking.</li>
+              <li>Implemented Socket integration for real-time data synchronisation and notifications.</li>
+              <li>Architected applications using <strong>MVVM</strong> design pattern for improved code maintainability.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="tl-header">
+              <div>
+                <h3 class="tl-role">Flutter Developer</h3>
+                <p class="tl-company">Tagline Infotech LLP, Surat</p>
+              </div>
+              <span class="tl-period">Nov 2022 – May 2024</span>
+            </div>
+            <ul class="tl-list">
+              <li>Led development of <strong>GreenPraxis</strong> environmental monitoring app with Google Maps, offline
+                storage, and background processing.</li>
+              <li>Spearheaded <strong>ATLAS Carbon App</strong> with AppsFlyer analytics, multi-platform auth, and
+                in-app subscriptions.</li>
+              <li>Delivered solutions across e-commerce, environmental, and IoT domains.</li>
+              <li>🏆 Awarded <em>Best Team Player</em> for Q3 2023.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="tl-header">
+              <div>
+                <h3 class="tl-role">Flutter Developer</h3>
+                <p class="tl-company">SnepiTech, Surat</p>
+              </div>
+              <span class="tl-period">Dec 2021 – Nov 2022</span>
+            </div>
+            <ul class="tl-list">
+              <li>Developed diamond industry software with inventory management and business analytics.</li>
+              <li>Built foundational expertise in Flutter, state management, and mobile development best practices.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section id="projects" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Work</span>
+        <h2 class="section-title">Key <span class="gradient-text">Projects</span></h2>
+      </div>
+      <div class="projects-grid">
+
+        <div class="project-card reveal" id="project-leylix">
+          <div class="project-header" style="--accent: #7C3AED">
+            <div class="project-icon">💬</div>
+            <div class="project-badges">
+              <span class="badge badge-live">Live on Play Store</span>
+              <span class="badge badge-role">Lead Developer</span>
+            </div>
+          </div>
+          <h3 class="project-name">Leylix</h3>
+          <p class="project-type">Social Media Application</p>
+          <p class="project-desc">Comprehensive social networking platform with user profiles, real-time chat,
+            notifications, media sharing, and social interactions.</p>
+          <ul class="project-highlights">
+            <li>Real-time chat & push notifications via Socket + Firebase</li>
+            <li>Firebase Auth, Cloud Storage, Firestore integration</li>
+            <li>MVVM architecture for clean, maintainable codebase</li>
+          </ul>
+          <div class="project-tags">
+            <span>Flutter</span><span>Socket.IO</span><span>Firebase</span><span>MVVM</span>
+          </div>
+        </div>
+
+        <div class="project-card reveal" id="project-oppiwallet">
+          <div class="project-header" style="--accent: #059669">
+            <div class="project-icon">💳</div>
+            <div class="project-badges">
+              <span class="badge badge-live">Live on Play Store</span>
+              <span class="badge badge-role">Lead Developer</span>
+            </div>
+          </div>
+          <h3 class="project-name">OppiWallet</h3>
+          <p class="project-type">Digital Wallet · Fintech</p>
+          <p class="project-desc">Secure fintech application featuring wallet management, payment processing, biometric
+            authentication, and offline transaction support.</p>
+          <ul class="project-highlights">
+            <li>Biometric authentication + AES encryption</li>
+            <li>RESTful API payment gateway integration</li>
+            <li>Drift database for local data persistence & offline support</li>
+          </ul>
+          <div class="project-tags">
+            <span>Flutter</span><span>Drift DB</span><span>REST APIs</span><span>Biometrics</span>
+          </div>
+        </div>
+
+        <div class="project-card reveal" id="project-greenpraxis">
+          <div class="project-header" style="--accent: #16A34A">
+            <div class="project-icon">🌿</div>
+            <div class="project-badges">
+              <span class="badge badge-role">Lead Developer</span>
+            </div>
+          </div>
+          <h3 class="project-name">GreenPraxis</h3>
+          <p class="project-type">Environmental Monitoring</p>
+          <p class="project-desc">Land data visualisation platform with Google Maps integration, offline-first
+            architecture, and background data processing for field teams.</p>
+          <ul class="project-highlights">
+            <li>Google Maps SDK with custom markers, polygons, polylines</li>
+            <li>Background uploads via Dart Isolates & Compute functions</li>
+            <li>Resumable image uploads using Tus.io; Hive for offline storage</li>
+          </ul>
+          <div class="project-tags">
+            <span>Flutter</span><span>Google Maps</span><span>Hive</span><span>Dart Isolates</span>
+          </div>
+        </div>
+
+        <div class="project-card reveal" id="project-atlas">
+          <div class="project-header" style="--accent: #0EA5E9">
+            <div class="project-icon">🌍</div>
+            <div class="project-badges">
+              <span class="badge badge-role">Lead Developer</span>
+            </div>
+          </div>
+          <h3 class="project-name">ATLAS Carbon App</h3>
+          <p class="project-type">Sustainability · Analytics</p>
+          <p class="project-desc">Carbon footprint tracking app with advanced analytics, multi-platform authentication,
+            and in-app subscription management.</p>
+          <ul class="project-highlights">
+            <li>AppsFlyer SDK for event tracking & attribution monitoring</li>
+            <li>Google, Apple, Email auth via Firebase</li>
+            <li>Apple + Google in-app subscriptions with receipt validation</li>
+          </ul>
+          <div class="project-tags">
+            <span>Flutter</span><span>AppsFlyer</span><span>Firebase</span><span>IAP</span>
+          </div>
+        </div>
+
+        <div class="project-card reveal" id="project-airquality">
+          <div class="project-header" style="--accent: #F59E0B">
+            <div class="project-icon">💨</div>
+            <div class="project-badges">
+              <span class="badge badge-role">Team Member</span>
+            </div>
+          </div>
+          <h3 class="project-name">Air Quality Monitor</h3>
+          <p class="project-type">IoT · Hardware Integration</p>
+          <p class="project-desc">Mobile app bridging Flutter and native Android/iOS to monitor real-time air quality
+            from ESP32 BLE IoT devices.</p>
+          <ul class="project-highlights">
+            <li>Flutter Method Channels for native BLE ESP32 integration</li>
+            <li>TCP server communication for real-time data retrieval</li>
+            <li>Visualisation of CO₂, PM2.5, and temperature metrics</li>
+          </ul>
+          <div class="project-tags">
+            <span>Flutter</span><span>BLE</span><span>Method Channels</span><span>IoT</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section id="skills" class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Expertise</span>
+        <h2 class="section-title">Technical <span class="gradient-text">Skills</span></h2>
+      </div>
+      <div class="skills-grid">
+
+        <div class="skill-group reveal">
+          <div class="skill-group-icon">📱</div>
+          <h4>Mobile Development</h4>
+          <div class="skill-pills">
+            <span>Flutter</span><span>Dart</span><span>Android</span><span>iOS</span><span>Cross-platform</span>
+          </div>
+        </div>
+
+        <div class="skill-group reveal">
+          <div class="skill-group-icon">🏗️</div>
+          <h4>Architecture & Patterns</h4>
+          <div class="skill-pills">
+            <span>MVVM</span><span>Provider</span><span>Bloc</span><span>Clean Architecture</span>
+          </div>
+        </div>
+
+        <div class="skill-group reveal">
+          <div class="skill-group-icon">🔌</div>
+          <h4>Backend Integration</h4>
+          <div class="skill-pills">
+            <span>RESTful APIs</span><span>Socket.IO</span><span>HTTP</span><span>Dio</span><span>Real-time</span>
+          </div>
+        </div>
+
+        <div class="skill-group reveal">
+          <div class="skill-group-icon">🗃️</div>
+          <h4>Database</h4>
+          <div class="skill-pills">
+            <span>Drift</span><span>Hive</span><span>SharedPreferences</span><span>Firestore</span>
+          </div>
+        </div>
+
+        <div class="skill-group reveal">
+          <div class="skill-group-icon">🔥</div>
+          <h4>Firebase Services</h4>
+          <div class="skill-pills">
+            <span>Auth (Google/Apple/FB)</span><span>Push Notifications</span><span>Firestore</span><span>Cloud
+              Storage</span><span>App Distribution</span>
+          </div>
+        </div>
+
+        <div class="skill-group reveal">
+          <div class="skill-group-icon">🧩</div>
+          <h4>Third-party SDKs</h4>
+          <div class="skill-pills">
+            <span>Google Maps SDK</span><span>AppsFlyer</span><span>Payment Gateways</span><span>In-app
+              Subscriptions</span>
+          </div>
+        </div>
+
+        <div class="skill-group reveal">
+          <div class="skill-group-icon">⚙️</div>
+          <h4>Advanced Flutter</h4>
+          <div class="skill-pills">
+            <span>Dart Isolates</span><span>Method
+              Channels</span><span>flutter_screenutil</span><span>Localisation</span>
+          </div>
+        </div>
+
+        <div class="skill-group reveal">
+          <div class="skill-group-icon">🛠️</div>
+          <h4>Tools & Platforms</h4>
+          <div class="skill-pills">
+            <span>Git</span><span>GitHub</span><span>Play Store</span><span>App Store</span><span>Firebase
+              Console</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EDUCATION ===== -->
+  <section id="education" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Academia</span>
+        <h2 class="section-title">Education & <span class="gradient-text">Awards</span></h2>
+      </div>
+      <div class="edu-grid">
+        <div class="edu-card reveal" id="edu-mca">
+          <div class="edu-icon">🎓</div>
+          <div class="edu-body">
+            <h3>Master of Computer Applications <small>(MCA)</small></h3>
+            <p class="edu-school">Amity University</p>
+            <span class="edu-year">July 2023 – July 2025</span>
+          </div>
+        </div>
+        <div class="edu-card reveal" id="edu-bca">
+          <div class="edu-icon">📘</div>
+          <div class="edu-body">
+            <h3>Bachelor of Computer Applications <small>(BCA)</small></h3>
+            <p class="edu-school">Veer Narmad South Gujarat University (VNSGU)</p>
+            <span class="edu-year">2020 – 2023</span>
+          </div>
+        </div>
+        <div class="edu-card edu-award reveal" id="edu-award">
+          <div class="edu-icon">🏆</div>
+          <div class="edu-body">
+            <h3>Best Team Player Award</h3>
+            <p class="edu-school">Tagline Infotech LLP</p>
+            <span class="edu-year">Q3 2023</span>
+            <p class="edu-note">Recognised for outstanding collaboration, initiative, and on-time project delivery
+              across multiple client engagements.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Say Hello</span>
+        <h2 class="section-title">Let's <span class="gradient-text">Connect</span></h2>
+        <p class="section-desc">I'm open to Flutter freelance projects, full-time roles, and exciting collaboration
+          opportunities. Drop me a message!</p>
+      </div>
+      <div class="contact-wrap">
+        <div class="contact-info reveal">
+          <a href="mailto:bhargav.h.vagadiya@gmail.com" class="contact-tile" id="contact-email">
+            <div class="contact-tile-icon">✉️</div>
+            <div>
+              <p class="tile-label">Email</p>
+              <p class="tile-value">bhargav.h.vagadiya@gmail.com</p>
+            </div>
+          </a>
+          <a href="tel:+917405225963" class="contact-tile" id="contact-phone">
+            <div class="contact-tile-icon">📞</div>
+            <div>
+              <p class="tile-label">Phone</p>
+              <p class="tile-value">+91 7405225963</p>
+            </div>
+          </a>
+          <a href="https://linkedin.com/in/bhargav-vagadiya" target="_blank" class="contact-tile" id="contact-linkedin">
+            <div class="contact-tile-icon">💼</div>
+            <div>
+              <p class="tile-label">LinkedIn</p>
+              <p class="tile-value">linkedin.com/in/bhargav-vagadiya</p>
+            </div>
+          </a>
+        </div>
+        <form class="contact-form reveal" id="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="John Doe" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="john@example.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="Let's collaborate on a Flutter project..."
+              required />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..."
+              required></textarea>
+          </div>
+          <button type="submit" class="btn-primary btn-full" id="submit-btn">
+            <span>Send Message</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="22" y1="2" x2="11" y2="13" />
+              <polygon points="22 2 15 22 11 13 2 9 22 2" />
+            </svg>
+          </button>
+          <p class="form-success" id="form-success">🎉 Thanks! I'll get back to you soon.</p>
+          <p class="form-error" id="form-error">❌ Something went wrong. Please try again or email me directly.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer id="footer">
+    <div class="container">
+      <p class="footer-copy">Crafted with ❤️ by <strong>Bhargav Vagadiya</strong> · Flutter Developer · Surat, India</p>
+      <p class="footer-sub">© 2025 All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
