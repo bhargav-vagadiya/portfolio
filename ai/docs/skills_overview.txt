@@ -1,0 +1,12 @@
+Skills Overview: All Technical Skills of Bhargav Vagadiya
+Bhargav Vagadiya's technical skills span the following categories:
+
+1. Flutter & Mobile Development — State management (Provider, BLoC), MVVM architecture, responsive UI (flutter_screenutil, responsive_builder), Flutter Localization, Android & iOS development.
+
+2. Backend Integration & Networking — RESTful API integration, Socket.io for real-time communication, HTTP client, Dio networking library.
+
+3. Databases — Drift (structured local storage), Hive (lightweight offline storage), SharedPreferences (key-value storage), Firebase Firestore (cloud database).
+
+4. Firebase — Firebase Authentication (Google, Apple, Facebook, Email), Firebase Push Notifications, Firebase Firestore, Firebase Cloud Storage, Firebase App Distribution.
+
+5. Third-Party SDKs & Developer Tools — Google Maps SDK, AppsFlyer SDK, payment gateway integration, Apple App Store in-app subscriptions, Google Play in-app subscriptions, Git, GitHub, Firebase Console, Dart Isolates, Compute functions, App Store & Play Store publishing.

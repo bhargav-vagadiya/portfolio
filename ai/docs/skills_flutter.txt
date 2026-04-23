@@ -1,0 +1,3 @@
+Skill Category: Flutter & Mobile Development
+Bhargav Vagadiya's core Flutter skills include state management using Provider and BLoC patterns, and MVVM architecture design pattern for Flutter mobile applications. He builds responsive UIs using flutter_screenutil and responsive_builder, and supports multi-language apps with Flutter Localization.
+

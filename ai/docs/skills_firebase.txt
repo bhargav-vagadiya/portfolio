@@ -1,0 +1,3 @@
+Skill Category: Firebase
+Bhargav Vagadiya's Firebase skills include Firebase Authentication with Google, Apple, Facebook, and Email providers, Firebase Push Notifications, Firebase Firestore for cloud database, Firebase Cloud Storage, and Firebase App Distribution for internal app releases.
+

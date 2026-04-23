@@ -1,0 +1,3 @@
+Skill Category: Backend Integration & Networking
+Bhargav Vagadiya's backend integration skills include RESTful API integration, Socket.io for real-time communication, HTTP client, and Dio for networking in Flutter. He has integrated these tools in multiple Flutter applications for seamless client-server communication.
+

@@ -1,0 +1,12 @@
+Projects Overview: All Projects Bhargav Worked On
+Bhargav Vagadiya has built and shipped the following Flutter projects:
+
+1. OppiWallet — A fintech digital wallet app with wallet management, payment processing, and transaction history. Built at Elaunch Solutions. Domain: Fintech. Platform: Android (Google Play Store).
+
+2. Leylix — A social media and social networking app with user profiles, posts, chat, and push notifications. Built at Elaunch Solutions. Domain: Social Media. Platform: Android (Google Play Store).
+
+3. ATLAS: the Carbon App — A carbon tracking and environmental analytics app. Built at Tagline Infotech LLP as Lead Developer. Domain: Environmental / Sustainability. Platform: Android & iOS.
+
+4. GreenPraxis — An environmental monitoring app for land data visualization and field data collection using Google Maps. Built at Tagline Infotech LLP as Lead Developer. Domain: Environmental. Platform: Android & iOS.
+
+5. Air Quality Monitor — An IoT app connecting to ESP32 BLE devices and Cubic AM 7000 sensors for real-time air quality data (CO2, PM2.5, temperature). Built as a team member at Tagline Infotech LLP. Domain: IoT / Environmental. Platform: Android & iOS.

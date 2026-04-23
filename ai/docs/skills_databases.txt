@@ -1,0 +1,3 @@
+Skill Category: Databases
+Bhargav Vagadiya's database skills include Drift for structured local storage, Hive for lightweight offline storage, SharedPreferences for key-value storage, and Firebase Firestore for cloud database in Flutter apps. He has used these databases across multiple Flutter applications to handle both online and offline data persistence.
+

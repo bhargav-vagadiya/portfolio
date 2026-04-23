@@ -1,0 +1,3 @@
+Skill Category: Third-Party SDKs & Developer Tools
+Bhargav Vagadiya's third-party SDK skills include Google Maps SDK, AppsFlyer SDK, payment gateway integration, and in-app subscription integration for both Apple App Store and Google Play Store. His tools include Git, GitHub, Firebase Console, background processing using Dart Isolates and Compute functions, Google Play Store publishing, and Apple App Store publishing.
+
