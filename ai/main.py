@@ -1,6 +1,8 @@
 from typing import Any
 import os
+import shutil
 
+from huggingface_hub import snapshot_download
 from langchain.agents import create_agent, AgentState
 from langchain.agents.middleware import before_model
 from langchain_community.vectorstores import FAISS
@@ -34,11 +36,30 @@ llm = ChatGroq(
     model="openai/gpt-oss-20b"
 )
 
-# Load embeddings (ONNX-based via fastembed — no torch dependency)
-# cache_dir=/tmp so the model is writable on Vercel's read-only filesystem
+# fastembed skips download if cache dir exists even without the actual model file.
+# Force a clean download by clearing any partial cache before initializing.
+_FASTEMBED_CACHE = "/tmp/fastembed_cache"
+_HF_REPO        = "qdrant/bge-small-en-v1.5-onnx-q"
+_SNAPSHOT_HASH  = "52398278842ec682c6f32300af41344b1c0b0bb2"
+_MODEL_FILE     = os.path.join(
+    _FASTEMBED_CACHE,
+    f"models--{_HF_REPO.replace('/', '--')}",
+    "snapshots", _SNAPSHOT_HASH, "model_optimized.onnx"
+)
+
+if not os.path.exists(_MODEL_FILE):
+    # Wipe any partial/empty cache that would fool fastembed into skipping download
+    shutil.rmtree(_FASTEMBED_CACHE, ignore_errors=True)
+    # Pull the exact snapshot fastembed expects
+    snapshot_download(
+        repo_id=_HF_REPO,
+        revision=_SNAPSHOT_HASH,
+        cache_dir=_FASTEMBED_CACHE,
+    )
+
 embeddings = FastEmbedEmbeddings(
     model_name="BAAI/bge-small-en-v1.5",
-    cache_dir="/tmp/fastembed_cache"
+    cache_dir=_FASTEMBED_CACHE
 )
 
 # Absolute path so it works locally AND on Vercel regardless of cwd

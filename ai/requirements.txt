@@ -8,3 +8,4 @@ groq
 fastembed
 faiss-cpu
 python-dotenv
+huggingface_hub
