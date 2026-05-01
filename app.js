@@ -219,3 +219,235 @@ function handleSubmit(e) {
     setTimeout(() => { line.style.opacity = '1'; }, i * 150 + 500);
   });
 })();
+
+// ============================================================
+//  AI CHATBOT
+// ============================================================
+
+const AI_BASE_URL = 'https://portfolio-five-tawny-21.vercel.app/api'; // change this to your deployed URL when ready
+
+// ---- Configure marked.js for chat ----
+if (typeof marked !== 'undefined') {
+  // Custom renderer: wrap tables in a scrollable div
+  const renderer = new marked.Renderer();
+  renderer.table = function (header, body) {
+    return `<div class="table-wrap"><table><thead>${header}</thead><tbody>${body}</tbody></table></div>`;
+  };
+
+  marked.setOptions({
+    breaks: true,       // newlines → <br>
+    gfm: true,          // GitHub-flavoured markdown
+    mangle: false,
+    headerIds: false,
+    renderer,
+  });
+}
+
+function renderMarkdown(text) {
+  if (typeof marked === 'undefined') return text;
+  return marked.parse(text);
+}
+
+
+let chatOpen = false;
+let chatBusy = false;
+
+// ---- Toggle panel ----
+function toggleChat() {
+  const panel = document.getElementById('chat-panel');
+  const fab = document.getElementById('chat-fab');
+  const iconOpen = document.getElementById('icon-open');
+  const iconClose = document.getElementById('icon-close');
+
+  chatOpen = !chatOpen;
+  panel.classList.toggle('open', chatOpen);
+  fab.classList.toggle('open', chatOpen);
+
+  iconOpen.style.display = chatOpen ? 'none' : 'block';
+  iconClose.style.display = chatOpen ? 'block' : 'none';
+
+  if (chatOpen) {
+    setTimeout(() => document.getElementById('chat-input').focus(), 350);
+  }
+}
+
+// ---- Keyboard: Enter sends, Shift+Enter newline ----
+function handleChatKey(e) {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    sendChatMessage();
+  }
+}
+
+// ---- Auto-resize textarea ----
+function autoResizeInput(el) {
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight, 90) + 'px';
+}
+
+// ---- Suggested question chips ----
+function sendSuggestion(btn) {
+  // Strip emoji span text and get the full text
+  const text = btn.innerText.trim();
+  document.getElementById('chat-input').value = text;
+  sendChatMessage();
+}
+
+// ---- Append a message bubble ----
+function appendMessage(role, text) {
+  const welcome = document.getElementById('chat-welcome');
+  if (welcome) welcome.remove();
+
+  const msgs = document.getElementById('chat-messages');
+
+  const row = document.createElement('div');
+  row.className = `chat-msg ${role}`;
+
+  const avatar = document.createElement('div');
+  avatar.className = 'msg-avatar';
+  avatar.textContent = role === 'ai' ? 'BV' : 'You';
+
+  const bubble = document.createElement('div');
+  bubble.className = 'msg-bubble';
+
+  if (role === 'ai' && text) {
+    bubble.innerHTML = renderMarkdown(text);
+  } else {
+    // User messages: plain text (escape HTML for safety)
+    bubble.textContent = text;
+  }
+
+  row.appendChild(avatar);
+  row.appendChild(bubble);
+  msgs.appendChild(row);
+  scrollToBottom();
+  return bubble;
+}
+
+// ---- Typing indicator ----
+function showTyping() {
+  const msgs = document.getElementById('chat-messages');
+  const row = document.createElement('div');
+  row.className = 'chat-typing';
+  row.id = 'typing-indicator';
+
+  const avatar = document.createElement('div');
+  avatar.className = 'msg-avatar';
+  avatar.style.cssText = 'background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:700;flex-shrink:0';
+  avatar.textContent = 'BV';
+
+  const bubble = document.createElement('div');
+  bubble.className = 'typing-bubble';
+  [1, 2, 3].forEach(() => {
+    const dot = document.createElement('div');
+    dot.className = 'typing-dot';
+    bubble.appendChild(dot);
+  });
+
+  row.appendChild(avatar);
+  row.appendChild(bubble);
+  msgs.appendChild(row);
+  scrollToBottom();
+}
+
+function removeTyping() {
+  const el = document.getElementById('typing-indicator');
+  if (el) el.remove();
+}
+
+function scrollToBottom() {
+  const msgs = document.getElementById('chat-messages');
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+// ---- Main send function (non-streaming /chat endpoint) ----
+async function sendChatMessage() {
+  if (chatBusy) return;
+
+  const input = document.getElementById('chat-input');
+  const sendBtn = document.getElementById('chat-send-btn');
+  const message = input.value.trim();
+  if (!message) return;
+
+  // Clear input
+  input.value = '';
+  input.style.height = 'auto';
+
+  // Show user bubble
+  appendMessage('user', message);
+
+  // Lock UI
+  chatBusy = true;
+  sendBtn.disabled = true;
+
+  // Show typing indicator while waiting for response
+  showTyping();
+
+  let aiBubble = null;
+
+  try {
+    const res = await fetch(`${AI_BASE_URL}/chat`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message }),
+    });
+
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+    const data = await res.json();
+    const fullText = (data.response || '').trim();
+
+    removeTyping();
+    aiBubble = appendMessage('ai', '');
+
+    if (!fullText) {
+      aiBubble.classList.add('error');
+      aiBubble.textContent = '⚠️ No response received. Is the AI server running?';
+    } else {
+      // Typewriter: reveal words one-by-one, re-render markdown each step
+      await typewriterReveal(aiBubble, fullText);
+    }
+
+  } catch (err) {
+    removeTyping();
+    if (!aiBubble) aiBubble = appendMessage('ai', '');
+    aiBubble.classList.add('error');
+    aiBubble.textContent = '⚠️ Could not reach the AI server. Start it with: uvicorn main:app --reload';
+    console.error('[Chatbot]', err);
+  } finally {
+    chatBusy = false;
+    sendBtn.disabled = false;
+    scrollToBottom();
+  }
+}
+
+// ---- Typewriter word-reveal effect ----
+function typewriterReveal(bubble, fullText) {
+  return new Promise(resolve => {
+    const words = fullText.split(' ');
+    let revealed = '';
+    let i = 0;
+
+    function step() {
+      if (i >= words.length) {
+        // Final render with full text to ensure correct markdown
+        bubble.innerHTML = renderMarkdown(fullText);
+        scrollToBottom();
+        resolve();
+        return;
+      }
+      revealed += (i === 0 ? '' : ' ') + words[i];
+      bubble.innerHTML = renderMarkdown(revealed);
+      scrollToBottom();
+      i++;
+      // Slight speed variation for a natural feel
+      const delay = words[i - 1].length > 6 ? 40 : 28;
+      setTimeout(step, delay);
+    }
+
+    step();
+  });
+}
+
+
+

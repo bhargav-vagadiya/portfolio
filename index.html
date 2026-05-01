@@ -40,6 +40,8 @@
     // TODO: Replace with your EmailJS Public Key
     emailjs.init({ publicKey: 'YOUR_PUBLIC_KEY' });
   </script>
+  <!-- marked.js — markdown parser for AI chat responses -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@9/marked.min.js"></script>
 </head>
 
 <body>
@@ -589,6 +591,89 @@
       <p class="footer-sub">© 2025 All rights reserved.</p>
     </div>
   </footer>
+
+  <!-- ===== AI CHAT WIDGET ===== -->
+  <!-- FAB trigger button -->
+  <button id="chat-fab" class="chat-fab" aria-label="Chat with Bhargav AI" onclick="toggleChat()">
+    <span class="chat-fab-tooltip">Chat with Bhargav's AI ✨</span>
+    <span class="chat-fab-icon" id="chat-fab-icon">
+      <!-- Sparkle / open icon -->
+      <svg id="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        <path d="M8 10h.01M12 10h.01M16 10h.01"/>
+      </svg>
+      <!-- Close icon (shown when open) -->
+      <svg id="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="display:none">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </span>
+  </button>
+
+  <!-- Chat panel -->
+  <div id="chat-panel" class="chat-panel" role="dialog" aria-label="AI Chat">
+
+    <!-- Header -->
+    <div class="chat-header">
+      <div class="chat-header-avatar">BV</div>
+      <div class="chat-header-info">
+        <div class="chat-header-name">✨ Bhargav AI</div>
+        <div class="chat-status">
+          <span class="chat-status-dot"></span> Online · Powered by RAG + Groq
+        </div>
+      </div>
+      <button class="chat-close-btn" onclick="toggleChat()" aria-label="Close chat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Messages -->
+    <div class="chat-messages" id="chat-messages">
+      <!-- Welcome state -->
+      <div class="chat-welcome" id="chat-welcome">
+        <div class="chat-welcome-icon">🤖</div>
+        <div>
+          <h3>Hey there! I'm Bhargav's AI</h3>
+          <p>Ask me anything about Bhargav's skills, projects, or experience.</p>
+        </div>
+        <div class="chat-suggestions">
+          <button class="chat-suggestion-chip" onclick="sendSuggestion(this)">
+            <span>📱</span> What's Bhargav's tech stack?
+          </button>
+          <button class="chat-suggestion-chip" onclick="sendSuggestion(this)">
+            <span>🚀</span> Tell me about his key projects
+          </button>
+          <button class="chat-suggestion-chip" onclick="sendSuggestion(this)">
+            <span>💼</span> How many years of experience does he have?
+          </button>
+          <button class="chat-suggestion-chip" onclick="sendSuggestion(this)">
+            <span>🤝</span> Is he available for hire?
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Input area -->
+    <div class="chat-input-area">
+      <div class="chat-input-row">
+        <textarea
+          id="chat-input"
+          class="chat-input"
+          placeholder="Ask me anything about Bhargav…"
+          rows="1"
+          onkeydown="handleChatKey(event)"
+          oninput="autoResizeInput(this)"
+        ></textarea>
+        <button id="chat-send-btn" class="chat-send-btn" onclick="sendChatMessage()" aria-label="Send">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+          </svg>
+        </button>
+      </div>
+      <p class="chat-powered-by">Powered by LangChain · FAISS · Groq</p>
+    </div>
+  </div>
 
   <script src="app.js"></script>
 </body>

@@ -1,6 +1,6 @@
 from langchain_community.document_loaders import TextLoader
 from langchain_community.vectorstores import FAISS
-from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_community.embeddings.fastembed import FastEmbedEmbeddings
 from pathlib import Path
 
 # Load documents
@@ -15,10 +15,9 @@ for file in docs_path.glob("*.txt"):
     content[0].metadata["source"] = file.name
     documents.append(content[0])
 
-# Embeddings
-embeddings = HuggingFaceEmbeddings(
-    model_name="BAAI/bge-small-en",
-    encode_kwargs={"normalize_embeddings": True}
+# Embeddings (ONNX-based via fastembed — no torch dependency)
+embeddings = FastEmbedEmbeddings(
+    model_name="BAAI/bge-small-en-v1.5"
 )
 
 # Create vector store
