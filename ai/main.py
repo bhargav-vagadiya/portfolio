@@ -22,9 +22,9 @@ app = FastAPI()
 # Allow browser requests from any origin (portfolio on GitHub Pages or file://)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_origins=["https://bhargav-vagadiya.github.io"],
+    allow_methods=["POST", "GET", "OPTIONS"],
+    allow_headers=["Content-Type"],
 )
 
 class ChatRequest(BaseModel):
